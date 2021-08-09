@@ -2,6 +2,7 @@ from logging import NOTSET
 import discord
 import time
 from discord import channel
+from discord import colour
 from discord.ext import commands
 
 
@@ -56,6 +57,14 @@ class SomeCommands(commands.Cog):
         await ctx.send(embed=embed)
         
 
+    @commands.command(name="fancyembed")
+    async def fancyembed(self, ctx:commands.Context):
+        """Creates a fancy embed"""
+        embed = discord.Embed(title=f"Fancy Embed bruh!", description = "This be a fancy embed man" , colour = 0x14C821)
+        embed.set_author(name = "Maxy" , icon_url= "https://avatars.githubusercontent.com/u/17339687?v=4")
+        embed.add_field(name="This be Field", value="This be the value for the said field")
+
+        await ctx.send(embed=embed)
 
 def setup(bot: commands.Bot):
     bot.add_cog(SomeCommands(bot))
